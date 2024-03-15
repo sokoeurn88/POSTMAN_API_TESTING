@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "ddaca225-442d-4535-944e-2e8e580a8d60",
+		"name": "Variables_PostMan_API_Testing_01",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20299345"
+	},
+	"item": [
+		{
+			"name": "GETRequest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_envi}}/api/users?page=2",
+					"host": [
+						"{{url_envi}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POSTRequest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"sok\",\r\n    \"job\": \"QC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_collection}}/api/users",
+					"host": [
+						"{{url_collection}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUTRequest",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set(\"url_local\", \"https://reqres.in\");\r",
+							"\r",
+							"//Global variables\r",
+							"pm.globals.set(\"userid_global\", \"434\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"console.log(pm.variables.get(\"url_local\"));\r",
+							"\r",
+							"console.log(pm.globals.get(\"userid_global\"));\r",
+							"\r",
+							"pm.globals.unset(\"userid_global\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"sok\",\r\n    \"job\": \"QA\",\r\n    \"location\": \"Dallas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_local}}/api/users/{{userid_global}}",
+					"host": [
+						"{{url_local}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"{{userid_global}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETERequest",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url_global}}/api/users/434",
+					"host": [
+						"{{url_global}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"434"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GETSingleRequest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_dev}}/api/users/2",
+					"host": [
+						"{{url_dev}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url_collection",
+			"value": "https://reqres.in",
+			"type": "string"
+		}
+	]
+}
